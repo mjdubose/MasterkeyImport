@@ -131,11 +131,7 @@ namespace MasterkeyImport
         }
         private void convertCSVToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var result = SaveFileDialog.ShowDialog();
-            if (result != DialogResult.OK) return;
-            var fileinfo = new FileInfo(SaveFileDialog.FileName);
-
-            ExportDgvtoCsv(dg_Convert, fileinfo);
+           
         }
 
         private void saveFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
@@ -146,6 +142,15 @@ namespace MasterkeyImport
         private void OpenCSVDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
 
+        }
+
+        private void saveFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var result = SaveFileDialog.ShowDialog();
+            if (result != DialogResult.OK) return;
+            var fileinfo = new FileInfo(SaveFileDialog.FileName);
+
+            ExportDgvtoCsv(dg_Convert, fileinfo);
         }
 
        
