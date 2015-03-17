@@ -108,7 +108,7 @@
             // OpenCSVDialog
             // 
             this.OpenCSVDialog.Filter = "CSV files|*.csv|All FIles|*.*";
-            this.OpenCSVDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.OpenCSVDialog_FileOk);
+          
             // 
             // SaveFileDialog
             // 

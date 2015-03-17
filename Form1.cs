@@ -4,7 +4,7 @@ using System.Data.OleDb;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-
+//https://github.com/mjdubose/MasterkeyImport
 
 namespace MasterkeyImport
 {
@@ -139,10 +139,7 @@ namespace MasterkeyImport
 
         }
 
-        private void OpenCSVDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-
-        }
+      
 
         private void saveFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
