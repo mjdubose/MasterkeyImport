@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 //https://github.com/mjdubose/MasterkeyImport
@@ -10,9 +13,12 @@ namespace MasterkeyImport
 {
     public partial class Form1 : Form
     {
+
+        private List<KeywizImport> kwl;
         public Form1()
         {
             InitializeComponent();
+            kwl = new List<KeywizImport>();
         }
 
         private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -129,16 +135,107 @@ namespace MasterkeyImport
 
             GC.Collect();
         }
+
+        private void ResetDataGridView()
+        {
+            dg_Convert.CancelEdit();
+            dg_Convert.Columns.Clear();
+            dg_Convert.DataSource = null;
+        
+        }
+
         private void convertCSVToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+            if (dg_Convert.Columns.Count == 0) return;
+         //   MessageBox.Show("Past column count check");
+            if (textBox1.Text == string.Empty) return;
+         //   MessageBox.Show("Text Box 1 check");
+            if (textBox2.Text == string.Empty) return;
+          //  MessageBox.Show("Text Box 2 check");
+            if (textBox3.Text == string.Empty) return;
+          //  MessageBox.Show("Text Box 3 check");
+            kwl.Clear();
+
+
+            var bs = new BindingSource {DataSource = typeof (KeywizImport)};
+            for (int i = 0; i < dg_Convert.Rows.Count - 1; i++)
+            {
+               
+                var row = dg_Convert.Rows[i];
+             
+                    var kwi = new KeywizImport
+                    {
+                        MK_System_ID = textBox1.Text,
+                        Complete_Symbol = row.Cells[8].Value.ToString()
+                    };
+                string completekeysymbol = kwi.Complete_Symbol;
+                bool numcheck = false;
+                foreach (var c in completekeysymbol)
+                {
+                    if (char.IsLetter(c))
+                    {
+                        kwi.Symbol_Field_One += c;
+                    }
+                    else
+                    if (char.IsNumber(c))
+                    {
+                        kwi.Symbol_Field_Two += c;
+                        numcheck = true;
+                    }
+                }
+
+                kwi.Sort_Index_Order =  numcheck == false ? "1" : "5";
+
+                kwi.Key_Mfg = textBox2.Text;
+
+                kwi.Blind_Code = kwi.Complete_Symbol;
+                kwi.Keyway = textBox3.Text;
+
+                kwi.Symbol_Field_Three = "";
+                kwi.Key_Desc = "";
+                kwi.Key_Comments = "";
+
+                kwi.Bitting_One = row.Cells[9].Value.ToString();
+                kwi.Bitting_Two = row.Cells[10].Value.ToString();
+                kwi.Bitting_Three = row.Cells[11].Value.ToString();
+                kwi.Bitting_Four = row.Cells[12].Value.ToString();
+                kwi.Bitting_Five = row.Cells[13].Value.ToString();
+                kwi.Bitting_Six = row.Cells[14].Value.ToString();
+                kwi.Bitting_Seven = row.Cells[15].Value.ToString();
+                kwi.Search_Bitting = kwi.Bitting_One + kwi.Bitting_Two + kwi.Bitting_Three + kwi.Bitting_Four +
+                                     kwi.Bitting_Five + kwi.Bitting_Six + kwi.Bitting_Seven;
+                kwi.Single_Ang_One = "";
+                kwi.Single_Ang_Two = "";
+                kwi.Single_Ang_Three = "";
+                kwi.Single_Ang_Four = "";
+                kwi.Single_Ang_Five = "";
+                kwi.Single_Ang_Six = "";
+                kwi.Double_Ang_One = "";
+                kwi.Double_Ang_Two = "";
+                kwi.Double_Ang_Three = "";
+                kwi.Double_Ang_Four = "";
+                kwi.Double_Ang_Five = "";
+                kwi.Double_Ang_Six = "";
+                kwi.Cyl_Pins = "6";
+                kwi.Status = 'A';
+
+                bs.Add(kwi);
+
+            }
+        
+            ResetDataGridView();
+            this.dg_Convert.AutoGenerateColumns = true;
+
+          
+            dg_Convert.DataSource = bs;
+       
+            dg_Convert.AutoGenerateColumns = true;
+
+            dg_Convert.Refresh();
         }
 
-        private void saveFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-
-        }
-
+     
+ 
       
 
         private void saveFileToolStripMenuItem_Click(object sender, EventArgs e)
