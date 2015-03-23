@@ -56,9 +56,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dg_Convert.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_Convert.Location = new System.Drawing.Point(46, 85);
+            this.dg_Convert.Location = new System.Drawing.Point(61, 105);
+            this.dg_Convert.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dg_Convert.Name = "dg_Convert";
-            this.dg_Convert.Size = new System.Drawing.Size(956, 336);
+            this.dg_Convert.Size = new System.Drawing.Size(1275, 414);
             this.dg_Convert.TabIndex = 0;
             // 
             // menuStrip1
@@ -69,7 +70,8 @@
             this.convertToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1031, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1375, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -82,37 +84,37 @@
             this.toolStripSeparator2,
             this.exitToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(44, 24);
             this.toolStripMenuItem1.Text = "File";
             // 
             // openFileToolStripMenuItem
             // 
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(141, 24);
             this.openFileToolStripMenuItem.Text = "Open File";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(138, 6);
             // 
             // saveFileToolStripMenuItem
             // 
             this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
-            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(141, 24);
             this.saveFileToolStripMenuItem.Text = "Save File";
             this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(138, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(141, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // convertToolStripMenuItem
@@ -120,13 +122,14 @@
             this.convertToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.convertCSVToolStripMenuItem});
             this.convertToolStripMenuItem.Name = "convertToolStripMenuItem";
-            this.convertToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.convertToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
             this.convertToolStripMenuItem.Text = "Convert";
+        
             // 
             // convertCSVToolStripMenuItem
             // 
             this.convertCSVToolStripMenuItem.Name = "convertCSVToolStripMenuItem";
-            this.convertCSVToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.convertCSVToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.convertCSVToolStripMenuItem.Text = "Convert CSV";
             this.convertCSVToolStripMenuItem.Click += new System.EventHandler(this.convertCSVToolStripMenuItem_Click);
             // 
@@ -140,57 +143,63 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(130, 49);
+            this.textBox1.Location = new System.Drawing.Point(173, 60);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(143, 20);
+            this.textBox1.Size = new System.Drawing.Size(189, 22);
             this.textBox1.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 52);
+            this.label1.Location = new System.Drawing.Point(17, 64);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 13);
+            this.label1.Size = new System.Drawing.Size(146, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Master Key System ID";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(309, 52);
+            this.label2.Location = new System.Drawing.Point(412, 64);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.Size = new System.Drawing.Size(92, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Manufactorer";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(385, 49);
+            this.textBox2.Location = new System.Drawing.Point(513, 60);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.Size = new System.Drawing.Size(132, 22);
             this.textBox2.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(524, 51);
+            this.label3.Location = new System.Drawing.Point(699, 63);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.Size = new System.Drawing.Size(56, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "Keyway";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(574, 49);
+            this.textBox3.Location = new System.Drawing.Point(765, 60);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.Size = new System.Drawing.Size(132, 22);
             this.textBox3.TabIndex = 7;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1031, 455);
+            this.ClientSize = new System.Drawing.Size(1375, 560);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox2);
@@ -200,6 +209,7 @@
             this.Controls.Add(this.dg_Convert);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Master Key System CSV Converter";
             ((System.ComponentModel.ISupportInitialize)(this.dg_Convert)).EndInit();

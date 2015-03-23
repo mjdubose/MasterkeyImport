@@ -170,18 +170,58 @@ namespace MasterkeyImport
                     };
                 string completekeysymbol = kwi.Complete_Symbol;
                 bool numcheck = false;
+                bool firstfield = true;
+                bool secondfield = false;
+                bool thirdfield = false;
                 foreach (var c in completekeysymbol)
                 {
-                    if (char.IsLetter(c))
+                   
+                    while (firstfield)
                     {
-                        kwi.Symbol_Field_One += c;
-                    }
-                    else
-                    if (char.IsNumber(c))
+
+                        if (char.IsLetter(c))
+                        {
+                            kwi.Symbol_Field_One += c;
+                            break;
+                        }
+                        else if (char.IsNumber(c))
+                        {
+                          numcheck = true;
+                            firstfield = false;
+                            secondfield = true;
+                            break;
+                        }}
+                    while (secondfield)
                     {
-                        kwi.Symbol_Field_Two += c;
-                        numcheck = true;
+                        if (char.IsNumber(c))
+                        {
+                            kwi.Symbol_Field_Two += c;
+                            break;
+                        }
+                        else if (char.IsLetter(c))
+                        {
+                            secondfield = false;
+                            thirdfield = true;
+                            break;
+                        }
+                       
                     }
+                    while (thirdfield)
+                    {
+                        if (char.IsLetter(c))
+                        {
+                            kwi.Symbol_Field_Three += c;
+                            break;
+                        }
+                        else
+                        {
+                           
+                                break;
+                            
+                        }
+                    }
+
+
                 }
 
                 kwi.Sort_Index_Order =  numcheck == false ? "1" : "5";
@@ -191,7 +231,7 @@ namespace MasterkeyImport
                 kwi.Blind_Code = kwi.Complete_Symbol;
                 kwi.Keyway = textBox3.Text;
 
-                kwi.Symbol_Field_Three = "";
+             
                 kwi.Key_Desc = "";
                 kwi.Key_Comments = "";
 
@@ -216,7 +256,22 @@ namespace MasterkeyImport
                 kwi.Double_Ang_Four = "";
                 kwi.Double_Ang_Five = "";
                 kwi.Double_Ang_Six = "";
-                kwi.Cyl_Pins = "6";
+                var sevendigitscheck = kwi.Bitting_Seven.Where(char.IsNumber).Aggregate(false, (current, x) => current || true);
+                var sixdigitscheck = kwi.Bitting_Six.Where(char.IsNumber).Aggregate(false, (current, x) => current || true);
+
+                if (sevendigitscheck)
+                {
+                    kwi.Cyl_Pins = "7";
+                }
+                else if (sixdigitscheck)
+                {
+                    kwi.Cyl_Pins = "6";
+                }
+                else
+                {
+                    kwi.Cyl_Pins = "5";
+                }
+           
                 kwi.Status = 'A';
 
                 bs.Add(kwi);
@@ -246,6 +301,8 @@ namespace MasterkeyImport
 
             ExportDgvtoCsv(dg_Convert, fileinfo);
         }
+
+      
 
        
     }
